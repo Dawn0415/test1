@@ -1,0 +1,15 @@
+name: Python Automation
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Run Python script
+      run: python 获取今日空气质量排行.py
