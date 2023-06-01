@@ -65,7 +65,7 @@ $(document).ready(function(){
     });
     //使用jQuery中的$.get()获取data.json文件，使用done函数;
     //done(function(data))中data表示调用的函数返回的数据
-    $.get('../实时.json').done(function(data){
+    $.get('json/实时.json').done(function(data){
         myChart.setOption({
             xAxis:{
             data:data.city
