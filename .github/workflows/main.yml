@@ -19,5 +19,5 @@ jobs:
       run: python app.py
     - name: Save json to file
       run: |
-        mkdir -p data
+        mkdir -p json
         mv 实时.json json/
