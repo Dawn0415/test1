@@ -17,7 +17,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run web scraping
       run: python app.py
-    - name: Save dict to file
+    - name: Save json to file
       run: |
         mkdir -p data
         mv 实时.json json/
