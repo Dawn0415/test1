@@ -1,23 +1,38 @@
-name: Web Scraping
+name: Python Web Scraper
 
 on:
   push:
     branches:
-      - master
+      - master  # 只有在master分支推送代码时才执行
 
 jobs:
-  run-scraping:
+  scrape:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # 指定Python 3.x版本
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run web scraping
-      run: python app.py
+        pip install -r requirements.txt  # 安装所需的Python库
+
+    - name: Run scraper
+      run: python app.py  # 执行Python爬虫代码
+
     - name: Save json to file
+      run: mv 实时.json json/  # 将JSON文件移动到"data"文件夹中
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'  # 指定Node.js 14.x版本
+    - name: Visualize data
       run: |
-        mkdir -p json
-        mv 实时.json json/
+        node js/实时.js  # 执行JavaScript可视化代码
